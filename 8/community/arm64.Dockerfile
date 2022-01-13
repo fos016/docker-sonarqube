@@ -130,7 +130,8 @@ RUN set -eux; \
   apk del --purge build-dependencies;
 
 COPY --chown=sonarqube:sonarqube run.sh sonar.sh ${SONARQUBE_HOME}/bin/
-
+RUN chmod u+x "/opt/sonarqube/bin/run.sh"
+RUN chmod u+x "/opt/sonarqube/bin/sonar.sh"
 WORKDIR ${SONARQUBE_HOME}
 EXPOSE 9000
 ENTRYPOINT ["bin/run.sh"]
